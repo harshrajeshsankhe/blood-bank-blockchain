@@ -1,0 +1,14 @@
+{
+  "name": "blood-bank-blockchain",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "install:all": "npm --prefix blockchain install && npm --prefix backend install && npm --prefix frontend install && npm --prefix iot/simulator install",
+    "dev": "concurrently \"npm --prefix backend run dev\" \"npm --prefix frontend run dev\"",
+    "test": "npm --prefix blockchain test && npm --prefix backend test",
+    "build": "npm --prefix backend run build && npm --prefix frontend run build"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}

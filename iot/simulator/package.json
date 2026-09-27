@@ -1,0 +1,7 @@
+{
+  "name": "bloodchain-iot-simulator",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {"start":"node simulator.js"},
+  "dependencies": {"mqtt":"^5.10.3"}
+}

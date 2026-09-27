@@ -1,0 +1,31 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: bloodchain-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: bloodchain
+      POSTGRES_USER: bloodchain
+      POSTGRES_PASSWORD: bloodchain
+    ports:
+      - "5432:5432"
+    volumes:
+      - bloodchain_pg:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U bloodchain -d bloodchain"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  mqtt:
+    image: eclipse-mosquitto:2
+    container_name: bloodchain-mqtt
+    restart: unless-stopped
+    ports:
+      - "1883:1883"
+      - "9001:9001"
+    volumes:
+      - ./iot/mosquitto.conf:/mosquitto/config/mosquitto.conf
+
+volumes:
+  bloodchain_pg:

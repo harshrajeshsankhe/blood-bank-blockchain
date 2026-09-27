@@ -1,0 +1,10 @@
+node_modules/
+.env
+.env.*
+!.env.example
+dist/
+coverage/
+.DS_Store
+hardhat/cache/
+hardhat/artifacts/
+*.log
